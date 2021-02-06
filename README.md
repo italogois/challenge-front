@@ -9,3 +9,5 @@ After clone this project follow this steps.
 1. Install libs : `npm i`
 2. tart: `npm start`
 3. To run tests: `npm test`
+
+You can see running on [b2w-challenge-front.vercel](https://b2w-challenge-front.vercel.app/)
