@@ -7,6 +7,7 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
   gap: 4rem;
+  align-items: center;
 }
 
 .projectName {
@@ -15,4 +16,88 @@ header {
 
 .usersFollowing {
   justify-self: end;
+}
+
+.usersList {
+  background-color: #fff;
+  color: black;
+  width: 25rem;
+  padding: 1rem;
+  position: absolute;
+  z-index: 2;
+  max-height: 0;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 18%);
+  transition: all 300ms ease;
+}
+
+.usersListShow {
+  transition: all 300ms ease;
+  max-height: 23rem;
+  opacity: 1;
+}
+
+.usersListItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.profileImage {
+  display: flex;
+  width: 4rem;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 5rem;
+  position: relative;
+  border: 3px solid #fff;
+  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 18%);
+}
+
+.profileImage img {
+  width: 100%;
+}
+
+.address {
+  font-size: 0.8rem;
+}
+
+.smallButton {
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  background-color: #d82c46;
+}
+
+.smallButton:hover {
+  background-color: #a72135;
+}
+
+.textButton {
+  background: transparent;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.textButton img {
+  width: 1.3rem;
+  filter: invert(100%);
+}
+
+.textButton:hover,
+.textButton:focus {
+  background: transparent;
 }

@@ -48,32 +48,11 @@
 .personalInfo {
   grid-area: PersonalInfo;
   padding: 1rem;
-  /* background-color: #f9f9f9; */
 }
 
 .contactInfo {
   grid-area: ContactInfo;
   padding: 1rem;
-  /* background-color: #f5f5f5; */
-}
-
-button {
-  border: 0;
-  background-color: #73aabb;
-  padding: 0.6rem 1rem;
-  color: #fff;
-  font-size: 0.9rem;
-  border-radius: 3px;
-  font-weight: 700;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: background-color 200ms linear;
-  outline: 0;
-}
-
-button:hover,
-button:focus {
-  background-color: #53808e;
 }
 
 .actionsButtons {
@@ -103,13 +82,9 @@ button:focus {
   text-decoration: underline;
 }
 
-ul {
+.infoList {
   margin-top: 0.8rem;
   color: #4c4c4c;
-}
-
-li {
-  list-style: none;
 }
 
 .moreDetails {

@@ -35,7 +35,7 @@ const ProfileCard = () => {
 
         <div className={styles.personalInfo}>
           <h4>Personal Info</h4>
-          <ul>
+          <ul className={styles.infoList}>
             <li>Born at: {user.nat}</li>
             <li>Age: {user.dob.age} years old</li>
           </ul>
@@ -43,7 +43,7 @@ const ProfileCard = () => {
 
         <div className={styles.contactInfo}>
           <h4>Contact Info</h4>
-          <ul>
+          <ul className={styles.infoList}>
             <li>Email: {user.email}</li>
             <li>Phone: {user.phone}</li>
           </ul>

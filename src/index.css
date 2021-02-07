@@ -23,3 +23,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+button {
+  border: 0;
+  background-color: #73aabb;
+  padding: 0.6rem 1rem;
+  color: #fff;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  font-weight: 700;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background-color 200ms linear;
+  outline: 0;
+}
+
+button:hover,
+button:focus {
+  background-color: #53808e;
+}
+
+li {
+  list-style: none;
+}

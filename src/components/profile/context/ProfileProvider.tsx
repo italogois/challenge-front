@@ -80,7 +80,7 @@ function ProfileProvider({ children }: any) {
 
   function unfollowUser(userUnfollow: any): void {
     const fieltredUsers = usersFollowing.filter(
-      (material) => material.login.uid !== userUnfollow.login.uid
+      (user) => user !== userUnfollow
     );
 
     setUsersFollowing(fieltredUsers);
