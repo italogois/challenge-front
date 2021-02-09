@@ -1,8 +1,51 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, ReactNode } from "react";
 
-const ProfileContext = createContext<any>(null);
+interface User {
+  readonly gender: string;
+  readonly name: {
+    readonly title: string;
+    readonly first: string;
+    readonly last: string;
+  };
+  readonly location: {
+    readonly street: {
+      readonly number: number;
+      readonly name: string;
+    };
+    readonly city: string;
+    readonly state: string;
+    readonly country: string;
+    readonly postcode: number;
+  };
+  readonly email: string;
+  readonly dob: {
+    readonly date: string;
+    readonly age: number;
+  };
+  readonly phone: string;
+  readonly picture: {
+    readonly large: string;
+    readonly medium: string;
+    readonly thumbnail: string;
+  };
+  readonly nat: string;
+}
 
-function ProfileProvider({ children }: any) {
+interface ProfileProvider {
+  readonly children: ReactNode;
+}
+
+type TypeProfileContext = {
+  user: User;
+  usersFollowing: User[];
+  followUser: () => void;
+  unfollowUser: (userUnfollow: User) => void;
+  getRadomUser$: () => void;
+};
+
+const ProfileContext = createContext<Partial<TypeProfileContext>>({});
+
+function ProfileProvider({ children }: ProfileProvider) {
   const API_ENDPOINT = "https://randomuser.me/api/";
   const USER_VALUE_INIT = {
     gender: "male",
@@ -18,42 +61,15 @@ function ProfileProvider({ children }: any) {
       },
       city: "Auckland",
       state: "Waikato",
-      country: "New Zealand",
+      country: "Brazil",
       postcode: 30610,
-      coordinates: {
-        latitude: "60.4869",
-        longitude: "-167.7269",
-      },
-      timezone: {
-        offset: "+3:00",
-        description: "Baghdad, Riyadh, Moscow, St. Petersburg",
-      },
     },
     email: "flynn.moore@example.com",
-    login: {
-      uuid: "588c60d3-8c9d-4c1b-9ead-de155b944af4",
-      username: "redswan886",
-      password: "temppass",
-      salt: "IVK1YeTu",
-      md5: "d1af29788ead0d4d73b079b95624104e",
-      sha1: "8d49a4c44e2bf8a7a232ad207b162712db504b89",
-      sha256:
-        "a8663850779bdb65c1acdd6f91b0978b29606f32bbaed84b3baa3d35da9e59bb",
-    },
     dob: {
       date: "1993-04-02T04:27:03.153Z",
       age: 28,
     },
-    registered: {
-      date: "2003-05-07T04:48:42.645Z",
-      age: 18,
-    },
     phone: "(375)-236-9240",
-    cell: "(853)-662-1481",
-    id: {
-      name: "",
-      value: null,
-    },
     picture: {
       large: "https://randomuser.me/api/portraits/men/33.jpg",
       medium: "https://randomuser.me/api/portraits/med/men/33.jpg",
@@ -62,8 +78,8 @@ function ProfileProvider({ children }: any) {
     nat: "NZ",
   };
 
-  const [user, setUser] = useState<any>(USER_VALUE_INIT);
-  const [usersFollowing, setUsersFollowing] = useState<any[]>([]);
+  const [user, setUser] = useState<User>(USER_VALUE_INIT);
+  const [usersFollowing, setUsersFollowing] = useState<User[]>([]);
 
   function getRadomUser$(): void {
     fetch(API_ENDPOINT)
@@ -75,10 +91,12 @@ function ProfileProvider({ children }: any) {
   }
 
   function followUser(): void {
+    if (usersFollowing.includes(user)) return;
+
     setUsersFollowing([...usersFollowing, user]);
   }
 
-  function unfollowUser(userUnfollow: any): void {
+  function unfollowUser(userUnfollow: User): void {
     const fieltredUsers = usersFollowing.filter(
       (user) => user !== userUnfollow
     );
@@ -86,12 +104,16 @@ function ProfileProvider({ children }: any) {
     setUsersFollowing(fieltredUsers);
   }
 
+  const props: TypeProfileContext = {
+    user: user,
+    usersFollowing: usersFollowing,
+    followUser: followUser,
+    unfollowUser: unfollowUser,
+    getRadomUser$: getRadomUser$,
+  };
+
   return (
-    <ProfileContext.Provider
-      value={{ user, usersFollowing, followUser, unfollowUser, getRadomUser$ }}
-    >
-      {children}
-    </ProfileContext.Provider>
+    <ProfileContext.Provider value={props}>{children}</ProfileContext.Provider>
   );
 }
 

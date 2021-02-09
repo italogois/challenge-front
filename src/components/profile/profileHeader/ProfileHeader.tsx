@@ -7,21 +7,14 @@ import arrowDown from "../../../images/down-arrow.svg";
 const ProfileHeader = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   const { usersFollowing, unfollowUser } = useContext(ProfileContext);
-  const EMPTY_USER = 0;
   const userFollowCount = usersFollowing?.length;
 
   function textUser(): string {
-    return usersFollowing?.length > 1 ? "users" : "user";
+    return usersFollowing!.length > 1 ? "users" : "user";
   }
 
   function toggleList(): void {
     setToggle(!toggle);
-  }
-
-  function textUserFollowing(): string {
-    return usersFollowing?.length > EMPTY_USER
-      ? `You following ${userFollowCount} ${textUser()}`
-      : "You following";
   }
 
   function showListClass(): string {
@@ -59,7 +52,7 @@ const ProfileHeader = () => {
                         </div>
                       </div>
                       <button
-                        onClick={() => unfollowUser(user)}
+                        onClick={() => unfollowUser!(user)}
                         className={styles.smallButton}
                       >
                         unfollow
