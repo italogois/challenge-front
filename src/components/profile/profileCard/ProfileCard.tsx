@@ -5,6 +5,10 @@ import styles from "./ProfileCard.module.css";
 const ProfileCard = () => {
   const { user, followUser, getRadomUser$ } = useContext(ProfileContext);
 
+  function isFirstUser(): boolean {
+    return user?.name.first === "Italo";
+  }
+
   return (
     <>
       <div className={styles.profileWrapper}>
@@ -26,7 +30,9 @@ const ProfileCard = () => {
           </div>
 
           <div className={styles.actionsButtons}>
-            <button onClick={followUser}>Follow</button>
+            <button onClick={followUser} disabled={isFirstUser()}>
+              Follow
+            </button>
             <button onClick={getRadomUser$} className={styles.buttonOutline}>
               Next user
             </button>

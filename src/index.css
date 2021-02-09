@@ -43,6 +43,11 @@ button:focus {
   background-color: #53808e;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  background-color: #dcdcdc;
+}
+
 li {
   list-style: none;
 }
