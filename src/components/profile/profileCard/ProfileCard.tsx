@@ -30,10 +30,14 @@ const ProfileCard = () => {
           </div>
 
           <div className={styles.actionsButtons}>
-            <button onClick={followUser} disabled={isFirstUser()}>
+            <button type="button" onClick={followUser} disabled={isFirstUser()}>
               Follow
             </button>
-            <button onClick={getRadomUser$} className={styles.buttonOutline}>
+            <button
+              type="button"
+              onClick={getRadomUser$}
+              className={styles.buttonOutline}
+            >
               Next user
             </button>
           </div>

@@ -42,7 +42,7 @@ const ProfileHeader = () => {
                           <img src={user.picture.large} alt="" />
                         </div>
 
-                        <div className="description">
+                        <div>
                           <h4>
                             {user.name.first} {user.name.last}
                           </h4>
